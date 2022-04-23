@@ -15,7 +15,6 @@ export function setPlayer (players)
             </div>
         `;
 
-        console.log(players[x].getName());
         (x === 0) ? playersList = el : playersList += el;
     }
 
@@ -64,25 +63,29 @@ export async function showPlayers ()
 
 export function selectPlayer (p, list)
 {
-    // const players = document.querySelectorAll('.card'),
-    //     number = list.findIndex(obj => obj.getId() === p.getId());
-
-        console.log(p);
-        console.log(list);
-        for (let x = 0; x < list.length; x++) {
-            console.log(list[x].getName());
-        }
-    // console.log('starting:' + p.getName());
+    const players = document.querySelectorAll('.card'),
+        number = list.findIndex(obj => obj.getId() === p);
     
-    // let slide = 0;
+    let slide = 0;
 
-    // for (let x = 0; x < number; x++) {
-    //     slide -= players[x].offsetWidth + 30;
-    //     document.getElementById('players').style.transform = 'translate(' +slide+ 'px, -50%)';    
-    // }
+    if (number === 0) document.getElementById('players').style.transform = 'translate(' +slide+ 'px, -50%)';
 
-    // console.log(number);
-    // document.getElementById(p.getId()).classList.add('active');
+    for (let x = 0; x < number; x++) {
+        slide -= players[x].offsetWidth + 30;
+        document.getElementById('players').style.transform = 'translate(' +slide+ 'px, -50%)';    
+    }
+
+    if (document.querySelector('.active')) document.querySelector('.active').classList.remove('active');
+    setTimeout(() => {
+        document.getElementById(p).classList.add('active');
+    }, 500);
+}
+
+export function showController ()
+{
+    setTimeout(() => {
+        document.getElementById('controller').classList.add('show');
+    }, 500);
 }
 
 // export async function dice (n)

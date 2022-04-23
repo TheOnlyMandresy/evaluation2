@@ -16,4 +16,26 @@ svg {
             stroke: $clr-primary;
         }
     }
+
+    &#diceSVG,
+    &#trophySVG {
+        stroke-width: 11px;
+        height: 100%;
+
+        & > * {
+            cursor: pointer;
+        } 
+    }
+
+    &#diceSVG {
+        fill: rgb(255 0 0 / 70%);
+        stroke: red;
+        filter: drop-shadow(0 .2em 1px rgba(0,0,0,.2)) drop-shadow(0 .2em 0px red);
+    }
+
+    &#trophySVG {
+        fill: rgba(0, 255, 115, 0.555);
+        stroke: rgb(0, 128, 75);
+        filter: drop-shadow(0 .2em 1px rgba(0,0,0,.2)) drop-shadow(0 .2em 0px rgb(0, 128, 75));
+    }
 }

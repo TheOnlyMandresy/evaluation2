@@ -144,6 +144,23 @@ svg#arrowSVG:hover .arrowLayer {
   fill: transparent;
   stroke: white;
 }
+svg#diceSVG, svg#trophySVG {
+  stroke-width: 11px;
+  height: 100%;
+}
+svg#diceSVG > *, svg#trophySVG > * {
+  cursor: pointer;
+}
+svg#diceSVG {
+  fill: rgba(255, 0, 0, 0.7);
+  stroke: red;
+  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px red);
+}
+svg#trophySVG {
+  fill: rgba(0, 255, 115, 0.555);
+  stroke: #00804b;
+  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px #00804b);
+}
 
 #flash {
   position: fixed;
@@ -361,11 +378,51 @@ main .game .card {
   align-items: center;
   justify-content: space-around;
 }
-main .game .card.active {
-  animation: active 1s ease 1s forwards;
-}
 main .game .card.show {
   animation: show 1s ease forwards;
+}
+main .game .card.active {
+  animation: active 1s ease forwards;
+}
+
+#controller {
+  position: absolute;
+  height: 20vh;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 170%);
+  width: 30vw;
+  transition: transform 700ms ease;
+}
+#controller.show {
+  transform: translate(-50%, 70%);
+}
+#controller .board {
+  height: 40%;
+  background-color: #4e4e4e;
+  box-shadow: 0 0 0 1px #999999, 0 1px 0 1px dimgray, 0 0.7rem 0 1px #303030, 0 1px 5px 0px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 0.2rem;
+}
+#controller #buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+#controller #buttons > * {
+  height: 100%;
+}
+#controller::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5%;
+  height: 100%;
+  background-color: #303030;
+  box-shadow: 0 -1px 0 1px #999999, 0 1px 5px 1px rgba(0, 0, 0, 0.2) inset, 0 7rem 5px 1px rgba(0, 0, 0, 0.2) inset;
 }
 
 @keyframes show {
@@ -380,11 +437,11 @@ main .game .card.show {
   }
 }
 @keyframes active {
-  0% {
-    transform: translateY(100%) scale(1.15);
+  from {
+    transform: scale(1);
   }
-  50%, 100% {
-    transform: translateY(0) scale(1.15);
+  to {
+    transform: scale(1.15);
   }
 }
 

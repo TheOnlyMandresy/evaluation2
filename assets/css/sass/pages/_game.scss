@@ -72,15 +72,68 @@ main .game {
         align-items: center;
         justify-content: space-around;
 
-        &.active {
-            animation: active 1s ease 1s forwards;
-        }
-
         &.show {
             animation: show 1s ease forwards;
         }
+
+        &.active {
+            animation: active 1s ease forwards;
+        }
     }
 }
+
+#controller {
+    position: absolute;
+    height: 20vh;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 170%);
+    width: 30vw;
+    transition: transform 700ms ease;
+
+    &.show {    
+        transform: translate(-50%, 70%);
+    }
+
+    .board {
+        height: 40%;
+        background-color: rgb(78, 78, 78);
+        box-shadow: 
+            0 0 0 1px rgb(153, 153, 153),
+            0 1px 0 1px rgb(105, 105, 105),
+            0 .7rem 0 1px rgb(48, 48, 48),
+            0 1px 5px 0+px rgba($color: #000000, $alpha: .2) inset;
+        border-radius: .2rem;
+    }
+
+    #buttons {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+        height: 100%;
+
+        & > * {
+            height: 100%;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 5px; left: 50%;
+        transform: translateX(-50%);
+        width: 5%; height: 100%;
+        background-color: rgb(48, 48, 48);
+        
+        box-shadow: 
+            0 -1px 0 1px rgb(153, 153, 153),
+            0 1px 5px 1px rgba(0, 0, 0, 0.2) inset,
+            0 7rem 5px 1px rgba(0, 0, 0, 0.2) inset;
+    }
+}
+
+
 
 @keyframes show {
     0% {
@@ -96,11 +149,10 @@ main .game {
 }
 
 @keyframes active {
-    0% {
-        transform: translateY(100%) scale(1.15);
+    from {
+        transform: scale(1);
     }
-    50%,
-    100% {
-        transform: translateY(0) scale(1.15);
+    to {
+        transform: scale(1.15);
     }
 }

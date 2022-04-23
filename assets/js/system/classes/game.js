@@ -5,10 +5,13 @@ class Game
     #mode = 'default';
     #list = [];
     #order = [];
+    #turn = 0;
 
     newPlayer (name)
     {
-        this.#list.push(new Player(name));
+        const obj = new Player(name);
+        this.#list.push(obj);
+        this.#order.push(obj.getId());
     }
 
     allPlayers (count = false)
@@ -23,8 +26,11 @@ class Game
 
     removePlayer (id)
     {
-        const found = this.#list.findIndex(obj => obj.getId() === id);
-        this.#list.splice(found, 1);
+        const removeList = this.#list.findIndex(obj => obj.getId() === id),
+            removeOrder = this.#order.findIndex(obj => obj === id);
+
+        this.#list.splice(removeList, 1);
+        this.#order.splice(removeOrder, 1);
     }
 
     gamemode (mode)
@@ -34,8 +40,6 @@ class Game
 
     setOrder ()
     {
-        this.#order = this.allPlayers();
-        
         for(let x = this.#order.length - 1; x >= 1; x--) {
             let j = Math.floor(Math.random() * (x + 1));
             let temp = this.#order[j];
@@ -52,6 +56,17 @@ class Game
     clean ()
     {
         this.#list = [];
+    }
+
+    nextPlayer ()
+    {
+        if (this.#turn !== this.allPlayers(true)) this.#turn++;
+        if (this.#turn === this.allPlayers(true)) this.#turn = 0;
+    }
+
+    getTurn ()
+    {
+        return this.#turn;
     }
 }
 
