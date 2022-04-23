@@ -1,0 +1,61 @@
+<div class="gamemode">
+    <h1>
+        Mode
+        <br />
+        de jeu
+    </h1>
+
+    <div class="choices">
+        <p>
+            La partie est bientôt prête à se lancer.. Il nous reste plus qu'à savoir, quel mode de jeu vous souhaitez jouer.
+        </p>
+    
+        <div class="buttons">
+            <button data-mode="default">partie classique</button>
+            <button data-mode="shuffle">partie aléatoire</button>
+        </div>
+    </div>
+
+    <div class="infos">
+        <p data-infos="default">
+            <span class="title">Partie par défaut</span>
+            <span class="description">
+                Chaque joueur possède un score <b>temporaire</b> et un score <b>global</b>.
+                
+                <br />
+                
+                À chaque tour, le joueur a son <b>score temporaire</b> initialisé à 0 et peut relancer le dé autant de fois qu'il le souhaite. Le
+                résultat d’un lancer est ajouté au <b>score temporaire</b>.
+
+                <br />
+                <br />
+
+                Lors de son tour, le joueur peut décider à tout moment de:
+
+                <br />
+
+                - Garder le score qu'il a accumulé, ce qui permet d’envoyer les <b>points</b> au score <b>global</b>. Ce sera alors le
+                tour de l’autre joueur.
+
+                <br />
+
+                - Relancer le dé. S’il obtient un <b>1</b>, son <b>score temporaire</b> est perdu et c’est la fin de son tour.
+
+                <br />
+                <br />
+
+                Le premier joueur qui atteint les 100 points <b>globaux</b> gagne le jeu.
+            </span>
+        </p>
+        <p data-infos="shuffle">
+            <span class="title">Partie aléatoire</span>
+            <span class="description">
+                Les règles sont les mêmes qu'une partie par défaut, à la différence que <b>l'ordre de passage est aléatoire</b>.
+
+                <br />
+
+                Ainsi, le joueur peut se retrouver à jouer plusiers fois de suite, ou jamais. (Plus vous êtes nombreux, plus ce mode devient compliqué)
+            </span>
+        </p>
+    </div>
+</div>

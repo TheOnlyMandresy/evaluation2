@@ -1,0 +1,14 @@
+@use '../libs' as *;
+
+h1 {
+    letter-spacing: .08rem;
+    color: $clr-primary;
+    margin-bottom: 1.5rem;
+    line-height: 1.6rem;
+    position: absolute;
+    bottom: 100%;
+}
+
+p {
+    max-width: 60ch;
+}

@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Akshar:wght@400;500&display=swap");
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  border: none;
+  width: 100%;
+  text-decoration: none;
+  outline: none;
+  list-style-type: none;
+}
+
+* {
+  /* Handle */
+  /* Handle on hover */
+}
+*::-webkit-scrollbar {
+  width: 7px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.2rem;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+html, body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  background-color: #1f96ff;
+  font-family: "Akshar", sans-serif;
+}
+
+main {
+  height: 100%;
+  transform: scale(0);
+  animation: landing 500ms ease-out forwards;
+}
+
+main > * {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+}
+
+@keyframes landing {
+  to {
+    transform: scale(1.5);
+  }
+}
+.buttons {
+  display: flex;
+  gap: 2px;
+}
+
+button {
+  cursor: pointer;
+  transition: opacity ease 500ms;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+}
+button:not(.danger) {
+  padding: 0.5rem;
+  font-weight: 500;
+}
+button:hover {
+  opacity: 0.7;
+}
+
+button.danger {
+  background-color: transparent;
+  color: #c73f00;
+  font-size: 0.7rem;
+}
+
+#back {
+  position: absolute;
+  cursor: pointer;
+  width: fit-content;
+  left: 0;
+}
+#back p {
+  text-transform: uppercase;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  letter-spacing: 0.1rem;
+  top: 50%;
+  padding-bottom: 0.3rem;
+  transform: translate(-1rem, -50%);
+  animation-duration: 500ms;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+#back:hover {
+  filter: drop-shadow(0 0 0.2rem yellow) drop-shadow(0 0 0.1rem #ffd000);
+}
+#back:hover p {
+  animation-name: playersBack;
+  animation-fill-mode: forwards;
+}
+#back .arrowLayer {
+  fill: white;
+  stroke: transparent;
+  transition: all 500ms ease;
+}
+#back:hover .arrowLayer {
+  fill: transparent;
+  stroke: white;
+}
+
+h1 {
+  letter-spacing: 0.08rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.6rem;
+  position: absolute;
+  bottom: 100%;
+}
+
+p {
+  max-width: 60ch;
+}
+
+svg#arrowSVG {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+svg#arrowSVG .arrowLayer {
+  fill: white;
+  stroke: transparent;
+  transition: all 500ms ease;
+}
+svg#arrowSVG:hover .arrowLayer {
+  fill: transparent;
+  stroke: white;
+}
+
+#flash {
+  position: fixed;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  width: fit-content;
+  animation: flash 2s ease forwards;
+}
+#flash.danger {
+  background-color: #c73f00;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+main > .landing ul {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+main > .landing ul li {
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem 3rem;
+}
+main > .landing ul li::before, main > .landing ul li::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+main > .landing ul li:hover::before {
+  transform: scale(1.05);
+}
+main > .landing ul li:hover::after {
+  opacity: 1;
+}
+main > .landing ul li:first-child::after {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+main > .landing ul li:last-child::after {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+main > .landing ul li::before {
+  content: attr(data-after);
+  background-color: white;
+  transition: transform 500ms ease;
+  padding: 0.5rem;
+}
+main > .landing ul li::after {
+  content: "";
+  opacity: 0;
+  transition: opacity 500ms ease;
+  border-inline: 2px #006dcc solid;
+}
+main > .landing #allPlayers {
+  position: absolute;
+}
+
+main > .players #back {
+  top: -120%;
+}
+main > .players section {
+  margin-bottom: 2rem;
+}
+main > .players section p {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+}
+main > .players section input {
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  margin-bottom: 2px;
+}
+main > .players #allPlayers {
+  overflow: overlay;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  max-height: 20vh;
+  overflow-x: auto;
+  border-radius: 0.2rem;
+}
+main > .players #allPlayers li {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+}
+main > .players #allPlayers p {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@keyframes playersBack {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(1.5rem, -50%);
+  }
+}
+main .gamemode #back {
+  top: -100%;
+}
+main .gamemode .choices p {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+main .gamemode .infos {
+  position: absolute;
+  top: 100%;
+}
+main .gamemode .infos > * {
+  position: absolute;
+  top: 1rem;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  font-size: 0.8rem;
+}
+main .gamemode .infos > *.show {
+  opacity: 1;
+}
+main .gamemode .infos p .title {
+  display: block;
+  text-transform: uppercase;
+  color: white;
+}
+
+main .game {
+  height: 20rem;
+  width: 50vw;
+  overflow: hidden;
+  padding-block: 2rem;
+  display: grid;
+  align-content: center;
+}
+main .game::after, main .game::before {
+  z-index: 1;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  top: 0;
+}
+main .game::after {
+  left: 0;
+  box-shadow: 40px 0 20px -30px #1f96ff inset;
+}
+main .game::before {
+  right: 0;
+  box-shadow: -40px 0 20px -30px #1f96ff inset;
+}
+main .game #loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #1f96ff;
+}
+main .game #loader.end {
+  transition: transform 500ms;
+  transform: scale(0);
+}
+main .game #players {
+  display: flex;
+  gap: 30px;
+  height: 70%;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: transform 500ms ease;
+}
+main .game #players * {
+  text-align: center;
+}
+main .game .card {
+  transform: scale(0);
+  background-color: white;
+  border-radius: 0.2rem;
+  padding: 3rem;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+main .game .card.active {
+  animation: active 1s ease 1s forwards;
+}
+main .game .card.show {
+  animation: show 1s ease forwards;
+}
+
+@keyframes show {
+  0% {
+    transform: translateY(100%) scale(1.15);
+  }
+  50%, 90% {
+    transform: translateY(0) scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes active {
+  0% {
+    transform: translateY(100%) scale(1.15);
+  }
+  50%, 100% {
+    transform: translateY(0) scale(1.15);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

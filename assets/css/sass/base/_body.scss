@@ -1,0 +1,43 @@
+@use '../libs' as *;
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@400;500&display=swap');
+
+*,
+::after,
+::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    outline: none;
+    list-style-type: none;
+}
+
+* { 
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,.3);
+        border-radius: .2rem;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(0,0,0,.6);
+    }
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    background-color: $clr-secondary-400;
+    font-family: 'Akshar', sans-serif;
+}

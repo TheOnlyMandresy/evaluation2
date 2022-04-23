@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@400;500&display=swap');
+
+@import 'base/root.css';
+@import 'base/body.css';
+@import 'base/main.css';
+
+
+@import 'components/flash.css';
+
+
+@import 'pages/landing.css';
+@import 'pages/players.css';

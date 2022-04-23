@@ -1,0 +1,20 @@
+*,
+::after,
+::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    outline: none;
+    list-style-type: none;
+}
+
+:root {
+    --clr-primary: white;
+    --clr-secondary-400: hsl(208, 100%, 56%);
+    --clr-secondary-500: hsl(208, 100%, 40%);
+    --clr-secondary-600: hsl(208, 100%, 36%);
+}

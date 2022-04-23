@@ -1,0 +1,20 @@
+main {
+    height: 100%;
+    transform: scale(0);
+    animation: landing 500ms ease-out forwards;
+}
+
+main > * {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+}
+
+
+@keyframes landing {
+    to {
+        transform: scale(1.5);
+    }
+}

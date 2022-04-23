@@ -1,0 +1,19 @@
+@use '../libs' as *;
+
+svg {
+    &#arrowSVG {
+        height: 1.5rem;
+        width: 1.5rem;
+
+        .arrowLayer {
+            fill: $clr-primary;
+            stroke: transparent;
+            transition: all 500ms ease;
+        }
+
+        &:hover .arrowLayer {
+            fill: transparent;
+            stroke: $clr-primary;
+        }
+    }
+}

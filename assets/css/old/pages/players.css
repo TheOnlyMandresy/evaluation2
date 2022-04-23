@@ -1,0 +1,36 @@
+#allPlayers {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+}
+
+#allPlayers li {
+    display: grid;
+    grid-template-columns: 1fr 3rem;
+    background-color: var(--clr-primary);
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    width: 50vw;
+}
+
+main > .players section {
+    padding: 2rem 5rem;
+    margin-bottom: 2rem;
+}
+main > .players section p {
+    font-size: .8rem;
+    margin-bottom: .5rem;
+}
+main > .players section input {
+    border-radius: .3rem;
+    padding: .5rem;
+    margin-bottom: 2px;
+}
+main > .players section .buttons {
+    display: flex;
+    gap: 2px;
+}
+main > .players section .buttons button {
+    border-radius: .3rem;
+    padding: .5rem;
+}

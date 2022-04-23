@@ -1,0 +1,76 @@
+main > .landing nav {
+    width: fit-content;
+    display: grid;
+    gap: 1em;
+    transform: scale(0);
+    animation: landing 500ms ease-out forwards;
+}
+
+
+
+main > .landing nav :is(h1, li) {
+    text-align: center;
+}
+
+
+
+main > .landing nav ul {
+    overflow: hidden;
+    border-radius: .5rem;
+    background-color: var(--clr-primary);
+}
+
+
+
+main > .landing nav li {
+    cursor: pointer;
+    padding: .5rem;
+}
+main > .landing nav li:hover {
+    animation-name: landingHover;
+    animation-timing-function: ease;
+}
+
+
+
+main > .landing nav li::before {
+    content: attr(data-after);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--clr-primary);
+    transition: transform 500ms ease;
+    padding: .5rem;
+}
+main > .landing nav li:hover::before {
+    transform: scale(1.05);
+}
+
+
+
+main > .landing nav li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    border-inline: 2px var(--clr-secondary-500) solid;
+}
+main > .landing nav li:first-child::after {
+    border-radius: .5rem .5rem 0 0;
+}
+main > .landing nav li:last-child::after {
+    border-radius: 0 0 .5rem .5rem;
+}
+main > .landing nav li:hover::after {
+    opacity: 1;
+}
+
+@keyframes landing {
+    to {
+        transform: scale(1.5);
+    }
+}

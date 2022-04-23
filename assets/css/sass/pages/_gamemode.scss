@@ -1,0 +1,38 @@
+@use '../libs' as *;
+
+
+main .gamemode {
+    #back {
+        top: -100%;
+    }
+
+    .choices p {
+        width: 50%;
+        margin-bottom: 1rem;
+    }
+    
+    .infos {
+        position: absolute;
+        top: 100%;
+
+        & >  * {
+            position: absolute;
+            top: 1rem;
+            opacity: 0;
+            transition: opacity 500ms ease;
+            font-size: .8rem;
+    
+            &.show {
+                opacity: 1;
+            }
+        }
+
+        p {
+            .title {
+                display: block;
+                text-transform: uppercase;
+                color: $clr-primary;
+            }
+        }
+    }
+}

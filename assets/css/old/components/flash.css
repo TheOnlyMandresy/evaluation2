@@ -1,0 +1,29 @@
+#flash {
+    position: fixed;
+    z-index: 11;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    width: fit-content;
+    animation: flash 2s ease forwards;
+}
+
+#flash.danger {
+    background-color: red;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    20%,
+    80% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}

@@ -1,0 +1,106 @@
+@use '../libs' as *;
+
+
+main .game {
+    height: 20rem;
+    width: 50vw;
+    overflow: hidden;
+    padding-block: 2rem;
+    display: grid;
+    align-content: center;
+
+    &::after,
+    &::before {
+        z-index: 1;
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 30%;
+        top: 0;
+    }
+
+    &::after {
+        left: 0;
+        box-shadow: 40px 0 20px -30px $clr-secondary-400 inset;
+    }
+
+    &::before {
+        right: 0;
+        box-shadow: -40px 0 20px -30px $clr-secondary-400 inset;
+    }
+
+    #loader {
+        position: fixed;
+        height: 100%; width: 100%;
+        top: 0; left: 0;
+        z-index: 10;
+        background-color: $clr-secondary-400;
+
+        &.end {
+            transition: transform 500ms;
+            transform: scale(0);
+        }
+    }
+
+    #players {
+        display: flex;
+        gap: 30px;
+        height: 70%;
+        
+        position: absolute;
+        left: 40%;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        transition: transform 500ms ease;
+
+        & * {
+            text-align: center;
+        }
+    }
+
+    .card {
+        transform: scale(0);
+        background-color: $clr-primary;
+        border-radius: 0.2rem;
+        padding: 3rem;
+        width: 70%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        &.active {
+            animation: active 1s ease 1s forwards;
+        }
+
+        &.show {
+            animation: show 1s ease forwards;
+        }
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateY(100%) scale(1.15);
+    }
+    50%,
+    90% {
+        transform: translateY(0) scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes active {
+    0% {
+        transform: translateY(100%) scale(1.15);
+    }
+    50%,
+    100% {
+        transform: translateY(0) scale(1.15);
+    }
+}
