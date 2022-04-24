@@ -35,5 +35,5 @@ function endListeners ()
 {
     document.getElementById('newGame').removeEventListener('click', newGame);
     document.getElementById('addPlayers').removeEventListener('click', addPlayers);
-    document.getElementById('leaderBoard').removeEventListener('click', leaderBoard);
+    // document.getElementById('leaderBoard').removeEventListener('click', leaderBoard);
 }

@@ -10,11 +10,12 @@ export function setPlayer (players)
         const el = `
             <div data-player="${players[x].getId()}" class="card">
                 <h2>${players[x].getName()}</h2>
-                <p class="leaderboard">Non classé</p>
+                
                 <p data-infos="score" class="score">0</p>
                 <p data-infos="victoires" class="victories">${players[x].ranking()}</p>
             </div>
         `;
+        // <p class="leaderboard">Non classé</p>
 
         (x === 0) ? playersList = el : playersList += el;
     }
