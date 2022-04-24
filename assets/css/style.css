@@ -52,9 +52,34 @@ main > * {
   width: fit-content;
 }
 
+#loadingWebsite {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 11;
+  background-color: #1f96ff;
+}
+#loadingWebsite button {
+  margin-top: 2rem;
+  width: fit-content;
+}
+#loadingWebsite .fade {
+  opacity: 1;
+  animation: fade 1s ease forwards;
+}
+
 @keyframes landing {
   to {
     transform: scale(1.5);
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 0;
   }
 }
 .buttons {
@@ -289,11 +314,13 @@ main > .players #allPlayers p {
     transform: translate(1.5rem, -50%);
   }
 }
+main .gamemode {
+  width: 60%;
+}
 main .gamemode #back {
   top: -100%;
 }
 main .gamemode .choices p {
-  width: 50%;
   margin-bottom: 1rem;
 }
 main .gamemode .infos {
@@ -305,7 +332,7 @@ main .gamemode .infos > * {
   top: 1rem;
   opacity: 0;
   transition: opacity 500ms ease;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
 }
 main .gamemode .infos > *.show {
   opacity: 1;
@@ -316,6 +343,17 @@ main .gamemode .infos p .title {
   color: white;
 }
 
+@media (min-width: 40em) {
+  main .gamemode {
+    width: initial;
+  }
+  main .gamemode .choices p {
+    width: 50%;
+  }
+  main .gamemode .infos > * {
+    font-size: 0.8rem;
+  }
+}
 main .game {
   height: 20rem;
   width: 50vw;
@@ -358,7 +396,7 @@ main .game #players {
   gap: 30px;
   height: 70%;
   position: absolute;
-  left: 40%;
+  left: 50%;
   top: 50%;
   transform: translate(0, -50%);
   transition: transform 500ms ease;
@@ -371,7 +409,6 @@ main .game .card {
   background-color: white;
   border-radius: 0.2rem;
   padding: 3rem;
-  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -383,6 +420,51 @@ main .game .card.show {
 }
 main .game .card.active {
   animation: active 1s ease forwards;
+}
+main .game .card.slide {
+  animation: slide 500ms ease forwards;
+}
+main .game .card p:last-child::before {
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  background-image: url(/assets/img/SVG/trophy.svg);
+  position: absolute;
+  transform: translate(1rem, 1px);
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: contrast(0);
+}
+
+#round {
+  position: fixed;
+  top: 25vh;
+  left: 50%;
+}
+#round::before {
+  z-index: 0;
+  content: attr(data-after);
+  opacity: 1;
+  transition: opacity 500ms ease 1s;
+}
+#round p {
+  z-index: 1;
+  opacity: 0;
+  color: white;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 0.2rem yellow) drop-shadow(0 0 0.1rem #ffd000);
+  animation: roundAdd ease 500ms forwards, roundInstall 500ms ease 500ms forwards;
+}
+#round p::before {
+  content: "+";
+}
+#round p.lost {
+  opacity: 1;
+  transform: translateY(0%);
+  animation: none;
+  transition: all ease 500ms;
+  color: #c73f00;
+  filter: drop-shadow(0 0 0.2rem #c73f00) drop-shadow(0 0 0.1rem #752500);
 }
 
 #controller {
@@ -425,6 +507,50 @@ main .game .card.active {
   box-shadow: 0 -1px 0 1px #999999, 0 1px 5px 1px rgba(0, 0, 0, 0.2) inset, 0 7rem 5px 1px rgba(0, 0, 0, 0.2) inset;
 }
 
+#winner {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+}
+#winner > * {
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(1rem);
+}
+#winner h2 {
+  animation: winnerText 500ms ease 1s forwards;
+  text-align: center;
+}
+#winner h1 {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin: initial;
+  line-height: initial;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  padding-inline: 2rem;
+  border-radius: 0.2rem;
+  margin-block: 1rem;
+  animation: winnerText 500ms ease 1500ms forwards;
+}
+#winner p {
+  animation: winnerText 500ms ease 2s forwards;
+}
+#winner .buttons {
+  margin-top: 2rem;
+  animation: winnerText 500ms ease 2500ms forwards;
+}
+
 @keyframes show {
   0% {
     transform: translateY(100%) scale(1.15);
@@ -442,6 +568,32 @@ main .game .card.active {
   }
   to {
     transform: scale(1.15);
+  }
+}
+@keyframes slide {
+  from {
+    transform: scale(1.15);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes winnerText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes roundAdd {
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes roundInstall {
+  to {
+    color: initial;
+    filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0)) drop-shadow(0 0 0.1rem rgba(0, 0, 0, 0));
   }
 }
 

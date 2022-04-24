@@ -2,12 +2,13 @@
 
 
 main .gamemode {
+    width: 60%;
+
     #back {
         top: -100%;
     }
 
     .choices p {
-        width: 50%;
         margin-bottom: 1rem;
     }
     
@@ -20,7 +21,7 @@ main .gamemode {
             top: 1rem;
             opacity: 0;
             transition: opacity 500ms ease;
-            font-size: .8rem;
+            font-size: .5rem;
     
             &.show {
                 opacity: 1;
@@ -33,6 +34,20 @@ main .gamemode {
                 text-transform: uppercase;
                 color: $clr-primary;
             }
+        }
+    }
+}
+
+@media (min-width: 40em) {
+    main .gamemode {
+        width: initial;
+
+        .choices p {
+            width: 50%;
+        }
+
+        .infos > * {
+            font-size: .8rem;
         }
     }
 }

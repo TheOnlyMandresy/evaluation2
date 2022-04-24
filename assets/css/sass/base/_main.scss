@@ -1,3 +1,5 @@
+@use '../libs' as *;
+
 main {
     height: 100%;
     transform: scale(0);
@@ -12,9 +14,37 @@ main > * {
     width: fit-content;
 }
 
+#loadingWebsite {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 11;
+    background-color: $clr-secondary-400;
+
+    button {
+        margin-top: 2rem;
+        width: fit-content;
+    }
+
+    .fade {
+        opacity: 1;
+        animation: fade 1s ease forwards;
+    }
+}
+
 
 @keyframes landing {
     to {
         transform: scale(1.5);
+    }
+}
+
+@keyframes fade {
+    to {
+        opacity: 0;
     }
 }
