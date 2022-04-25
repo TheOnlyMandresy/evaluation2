@@ -3,7 +3,7 @@
 
 main .game {
     height: 20rem;
-    width: 50vw;
+    width: 100vw;
     overflow: hidden;
     padding-block: 2rem;
     display: grid;
@@ -88,7 +88,7 @@ main .game {
             content: '';
             height: 1rem;
             width: 1rem;
-            background-image: url(/assets/img/SVG/trophy.svg);
+            background-image: url(/assets/medias/SVG/trophy.svg);
             position: absolute;
             transform: translate(1rem, 1px);
             background-position: center;
@@ -100,7 +100,6 @@ main .game {
 
 #round {
     position: fixed;
-    top: 25vh;
     left: 50%;
 
     &::before {
@@ -136,24 +135,28 @@ main .game {
     position: absolute;
     height: 20vh;
     bottom: 0;
+    top: initial;
     left: 50%;
     transform: translate(-50%, 170%);
     width: 30vw;
     transition: transform 700ms ease;
 
     &.show {    
-        transform: translate(-50%, 70%);
+        transform: translateX(-50%);
     }
 
     .board {
-        height: 40%;
-        background-color: rgb(78, 78, 78);
-        box-shadow: 
-            0 0 0 1px rgb(153, 153, 153),
-            0 1px 0 1px rgb(105, 105, 105),
-            0 .7rem 0 1px rgb(48, 48, 48),
-            0 1px 5px 0+px rgba($color: #000000, $alpha: .2) inset;
-        border-radius: .2rem;
+        height: 60%;
+        width: 50vw;
+        background-color: #4e4e4e;
+        box-shadow:
+            0 0 0 1px #999999,
+            0 1px 0 1px dimgrey,
+            0 0.7rem 0 1px #303030,
+            0 1px 5px 0px rgb(0 0 0 / 20%) inset;
+        border-radius: 0.2rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     #buttons {
@@ -162,6 +165,7 @@ main .game {
         align-items: center;
         gap: 1rem;
         height: 100%;
+        padding: 0.5rem;
 
         & > * {
             height: 100%;
@@ -169,17 +173,18 @@ main .game {
     }
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
-        top: 5px; left: 50%;
+        top: 50%;
+        left: 50%;
         transform: translateX(-50%);
-        width: 5%; height: 100%;
-        background-color: rgb(48, 48, 48);
-        
-        box-shadow: 
-            0 -1px 0 1px rgb(153, 153, 153),
-            0 1px 5px 1px rgba(0, 0, 0, 0.2) inset,
-            0 7rem 5px 1px rgba(0, 0, 0, 0.2) inset;
+        width: 5%;
+        height: 100%;
+        background-color: #303030;
+        box-shadow:
+            0 -1px 0 1px #999999,
+            0 1px 5px 1px rgb(0 0 0 / 20%) inset,
+            0 7rem 5px 1px rgb(0 0 0 / 20%) inset
     }
 }
 
@@ -283,5 +288,15 @@ main .game {
     to {
         color: initial;
         filter: drop-shadow(0 0 .2rem rgba(0,0,0,0)) drop-shadow(0 0 .1rem rgba(0,0,0,0));
+    }
+}
+
+@media (min-width: 40em) {
+    main .game {
+        width: 50vw;
+    }
+
+    #round {    
+        top: 25vh;
     }
 }

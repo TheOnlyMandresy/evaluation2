@@ -13,7 +13,7 @@ export async function landing ()
 
     document.getElementById('newGame').addEventListener('click', LANDING.newGame);
     document.getElementById('addPlayers').addEventListener('click', LANDING.addPlayers);
-    document.getElementById('leaderBoard').addEventListener('click', LANDING.leaderBoard);
+    // document.getElementById('leaderBoard').addEventListener('click', LANDING.leaderBoard);
 }
 
 export async function players ()

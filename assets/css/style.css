@@ -40,16 +40,18 @@ body {
 
 main {
   height: 100%;
-  transform: scale(0);
-  animation: landing 500ms ease-out forwards;
 }
 
 main > * {
+  padding: 2rem;
   position: fixed;
   left: 50%;
+  transform: translate(-50%, 90%);
+  width: fit-content;
+}
+main > *.landing, main > *.players, main > *.game {
   top: 50%;
   transform: translate(-50%, -50%);
-  width: fit-content;
 }
 
 #loadingWebsite {
@@ -72,14 +74,15 @@ main > * {
   animation: fade 1s ease forwards;
 }
 
-@keyframes landing {
-  to {
-    transform: scale(1.5);
-  }
-}
 @keyframes fade {
   to {
     opacity: 0;
+  }
+}
+@media (min-width: 40em) {
+  main > * {
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 .buttons {
@@ -111,7 +114,7 @@ button.danger {
   position: absolute;
   cursor: pointer;
   width: fit-content;
-  left: 0;
+  top: -80%;
 }
 #back p {
   text-transform: uppercase;
@@ -152,10 +155,6 @@ h1 {
   bottom: 100%;
 }
 
-p {
-  max-width: 60ch;
-}
-
 svg#arrowSVG {
   height: 1.5rem;
   width: 1.5rem;
@@ -179,12 +178,12 @@ svg#diceSVG > *, svg#trophySVG > * {
 svg#diceSVG {
   fill: rgba(255, 0, 0, 0.7);
   stroke: red;
-  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px red);
+  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px red) drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.5));
 }
 svg#trophySVG {
   fill: rgba(0, 255, 115, 0.555);
   stroke: #00804b;
-  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px #00804b);
+  filter: drop-shadow(0 0.2em 1px rgba(0, 0, 0, 0.2)) drop-shadow(0 0.2em 0px #00804b) drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.5));
 }
 
 #flash {
@@ -260,9 +259,6 @@ main > .landing #allPlayers {
   position: absolute;
 }
 
-main > .players #back {
-  top: -120%;
-}
 main > .players section {
   margin-bottom: 2rem;
 }
@@ -283,6 +279,8 @@ main > .players #allPlayers {
   display: grid;
   justify-items: center;
   gap: 0.5rem;
+  left: 0;
+  padding-inline: 2rem;
   position: absolute;
   max-height: 20vh;
   overflow-x: auto;
@@ -314,25 +312,20 @@ main > .players #allPlayers p {
     transform: translate(1.5rem, -50%);
   }
 }
-main .gamemode {
-  width: 60%;
-}
-main .gamemode #back {
-  top: -100%;
-}
 main .gamemode .choices p {
   margin-bottom: 1rem;
 }
 main .gamemode .infos {
   position: absolute;
   top: 100%;
+  left: 0;
 }
 main .gamemode .infos > * {
   position: absolute;
-  top: 1rem;
   opacity: 0;
   transition: opacity 500ms ease;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
+  padding-inline: 2rem;
 }
 main .gamemode .infos > *.show {
   opacity: 1;
@@ -350,13 +343,10 @@ main .gamemode .infos p .title {
   main .gamemode .choices p {
     width: 50%;
   }
-  main .gamemode .infos > * {
-    font-size: 0.8rem;
-  }
 }
 main .game {
   height: 20rem;
-  width: 50vw;
+  width: 100vw;
   overflow: hidden;
   padding-block: 2rem;
   display: grid;
@@ -428,7 +418,7 @@ main .game .card p:last-child::before {
   content: "";
   height: 1rem;
   width: 1rem;
-  background-image: url(/assets/img/SVG/trophy.svg);
+  background-image: url(/assets/medias/SVG/trophy.svg);
   position: absolute;
   transform: translate(1rem, 1px);
   background-position: center;
@@ -438,7 +428,6 @@ main .game .card p:last-child::before {
 
 #round {
   position: fixed;
-  top: 25vh;
   left: 50%;
 }
 #round::before {
@@ -471,19 +460,23 @@ main .game .card p:last-child::before {
   position: absolute;
   height: 20vh;
   bottom: 0;
+  top: initial;
   left: 50%;
   transform: translate(-50%, 170%);
   width: 30vw;
   transition: transform 700ms ease;
 }
 #controller.show {
-  transform: translate(-50%, 70%);
+  transform: translateX(-50%);
 }
 #controller .board {
-  height: 40%;
+  height: 60%;
+  width: 50vw;
   background-color: #4e4e4e;
-  box-shadow: 0 0 0 1px #999999, 0 1px 0 1px dimgray, 0 0.7rem 0 1px #303030, 0 1px 5px 0px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 0 0 1px #999999, 0 1px 0 1px dimgrey, 0 0.7rem 0 1px #303030, 0 1px 5px 0px rgba(0, 0, 0, 0.2) inset;
   border-radius: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #controller #buttons {
   display: flex;
@@ -491,6 +484,7 @@ main .game .card p:last-child::before {
   align-items: center;
   gap: 1rem;
   height: 100%;
+  padding: 0.5rem;
 }
 #controller #buttons > * {
   height: 100%;
@@ -498,7 +492,7 @@ main .game .card p:last-child::before {
 #controller::before {
   content: "";
   position: absolute;
-  top: 5px;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 5%;
@@ -594,6 +588,15 @@ main .game .card p:last-child::before {
   to {
     color: initial;
     filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0)) drop-shadow(0 0 0.1rem rgba(0, 0, 0, 0));
+  }
+}
+@media (min-width: 40em) {
+  main .game {
+    width: 50vw;
+  }
+
+  #round {
+    top: 25vh;
   }
 }
 

@@ -2,10 +2,6 @@
 
 
 main > .players {
-    #back {
-        top: -120%;
-    }
-
     section {
         margin-bottom: 2rem;
 
@@ -30,6 +26,8 @@ main > .players {
         display: grid;
         justify-items: center;
         gap: .5rem;
+        left: 0;
+        padding-inline: 2rem;
 
         position: absolute;
         max-height: 20vh;

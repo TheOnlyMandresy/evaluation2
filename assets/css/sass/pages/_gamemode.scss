@@ -2,12 +2,6 @@
 
 
 main .gamemode {
-    width: 60%;
-
-    #back {
-        top: -100%;
-    }
-
     .choices p {
         margin-bottom: 1rem;
     }
@@ -15,13 +9,14 @@ main .gamemode {
     .infos {
         position: absolute;
         top: 100%;
+        left: 0;
 
         & >  * {
             position: absolute;
-            top: 1rem;
             opacity: 0;
             transition: opacity 500ms ease;
-            font-size: .5rem;
+            font-size: .8rem;
+            padding-inline: 2rem;
     
             &.show {
                 opacity: 1;
@@ -44,10 +39,6 @@ main .gamemode {
 
         .choices p {
             width: 50%;
-        }
-
-        .infos > * {
-            font-size: .8rem;
         }
     }
 }

@@ -2,15 +2,21 @@
 
 main {
     height: 100%;
-    transform: scale(0);
-    animation: landing 500ms ease-out forwards;
 }
 
 main > * {
+
+    &.landing,
+    &.players,
+    &.game {
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    padding: 2rem;
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 90%);
     width: fit-content;
 }
 
@@ -36,15 +42,16 @@ main > * {
     }
 }
 
-
-@keyframes landing {
-    to {
-        transform: scale(1.5);
-    }
-}
-
 @keyframes fade {
     to {
         opacity: 0;
+    }
+}
+
+
+@media (min-width: 40em) {
+    main > * {  
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
