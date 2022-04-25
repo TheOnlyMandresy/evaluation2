@@ -299,4 +299,14 @@ main .game {
     #round {    
         top: 25vh;
     }
+
+    #winner {
+        p {
+            width: 60ch;
+        }
+
+        .buttons {
+            width: 40%;
+        }
+    }
 }

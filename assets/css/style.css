@@ -598,6 +598,13 @@ main .game .card p:last-child::before {
   #round {
     top: 25vh;
   }
+
+  #winner p {
+    width: 60ch;
+  }
+  #winner .buttons {
+    width: 40%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
