@@ -9,15 +9,15 @@ let clearBtn;
 export async function addPlayer (e)
 {
     e.preventDefault();
-    const input = document.querySelector('input'),
-        name = input.value,
-        check = name.replaceAll(' ', '');
+    const input = document.querySelector('input');
+    const name = input.value;
+    const check = name.replaceAll(' ', '');
 
     if (check === '') return HTML.flash('Veuillez remplir le champs');
     if (name.length > 15) return HTML.flash('Le nom du joueur est trop long');
     if (party.getPlayer(name)) return HTML.flash('Ce joueur est déjà inscrit');
-    input.value = '';
 
+    input.value = '';
     party.newPlayer(name);
 
     await PLAYERS_HTML.addPlayer(party.getPlayer(name));
@@ -25,13 +25,14 @@ export async function addPlayer (e)
     loadList();
 }
 
-export async function clearPlayers (e)
+export async function clearPlayers ()
 {
     const listeners = document.querySelectorAll('[data-remove]');
 
     party.clean();
 
-    for (let x = 0; x < listeners.length; x++) {
+    for (let x = 0; x < listeners.length; x++)
+    {
         listeners[x].removeEventListener('click', removePlayer);
     }
 
@@ -46,16 +47,19 @@ export async function loadList ()
 {
     await PLAYERS_HTML.loadList(party.allPlayers());
 
-    if (party.allPlayers(true) !== 0) {
+    if (party.allPlayers(true) !== 0)
+    {
         await PLAYERS_HTML.addPlayer();
         
-        if (!clearBtn) {
+        if (!clearBtn)
+        {
             clearBtn = document.getElementById('clear');
             clearBtn.addEventListener('click', clearPlayers);
         }
     }
 
-    for (let x = 0; x < party.allPlayers(true); x++) {
+    for (let x = 0; x < party.allPlayers(true); x++)
+    {
         document.querySelectorAll('[data-remove]')[x].addEventListener('click', removePlayer);
     }
 }
@@ -72,13 +76,15 @@ async function removePlayer (e)
 
     party.removePlayer(id);
     
-    await document.querySelector('button[data-remove="' +id+ '"]').addEventListener('click', removePlayer);
+    document.querySelector('button[data-remove="' +id+ '"]').addEventListener('click', removePlayer);
     PLAYERS_HTML.removePlayer(id);
+    if (party.allPlayers(true) == 0) await clearPlayers();
 }
 
 function endListeners ()
 {
-    if (clearBtn) {
+    if (clearBtn)
+    {
         clearBtn.removeEventListener('click', clearPlayers);
         clearBtn = null;
     }
@@ -87,7 +93,8 @@ function endListeners ()
     document.querySelector('form').removeEventListener('submit', addPlayer);
     document.getElementById('add').removeEventListener('click', addPlayer);
 
-    for (let x = 0; x < party.allPlayers(true); x++) {
+    for (let x = 0; x < party.allPlayers(true); x++)
+    {
         document.querySelectorAll('[data-remove]')[x].removeEventListener('click', removePlayer);
     }
 }

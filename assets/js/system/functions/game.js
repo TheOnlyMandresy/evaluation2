@@ -13,9 +13,13 @@ export async function initialize ()
     GAME_HTML.showController();
     await GAME_HTML.selectPlayer(party.getOrder()[party.getTurn()], party.allPlayers());
     
-    setTimeout(() => {
-        roll();
-    }, 1000);
+    setTimeout(setButtons, 1000);
+}
+
+function setButtons ()
+{
+    document.querySelector('#diceSVG > path').addEventListener('click', choice);
+    document.querySelector('#trophySVG > path').addEventListener('click', choice);
 }
 
 async function roll ()
@@ -26,14 +30,12 @@ async function roll ()
 
     if (round === 0) return nextPlayer();
 
-    document.querySelector('#diceSVG > path').addEventListener('click', choice);
-    document.querySelector('#trophySVG > path').addEventListener('click', choice);
+    setTimeout(setButtons, 500);
 }
 
 function choice (e)
 {
-    const target = e.target.parentNode.id,
-        turn = party.getOrder()[party.getTurn()];
+    const [target, turn] = [ e.target.parentNode.id, party.getOrder()[party.getTurn()] ];
 
     document.querySelector('#diceSVG > path').removeEventListener('click', choice);
     document.querySelector('#trophySVG > path').removeEventListener('click', choice);
@@ -41,7 +43,9 @@ function choice (e)
     if (target === 'diceSVG') return roll('roll');
     
     GAME_HTML.saveScore(turn);
+
     const score = document.querySelector('[data-player="' +turn+'"]').querySelector('[data-infos="score"]');
+
     if (parseInt(score.innerText) >= 100) return winner(turn);
 
     setTimeout(nextPlayer, 1000);
@@ -52,9 +56,7 @@ async function nextPlayer ()
     await party.nextPlayer();
     await GAME_HTML.selectPlayer(party.getOrder()[party.getTurn()], party.allPlayers());
     
-    setTimeout(() => {
-        roll();
-    }, 1000);
+    setTimeout(setButtons, 1000);
 }
 
 async function winner (id)

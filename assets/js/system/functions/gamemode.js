@@ -27,7 +27,9 @@ function endListeners ()
     const mode = document.querySelectorAll('[data-mode]');
 
     document.getElementById('back').removeEventListener('click', back);
-    for (let x = 0; x < mode.length; x++) {
+    
+    for (let x = 0; x < mode.length; x++)
+    {
         mode[x].addEventListener('click', playMode);
         mode[x].addEventListener('mouseover', infos);
         mode[x].addEventListener('touchstart', infos);

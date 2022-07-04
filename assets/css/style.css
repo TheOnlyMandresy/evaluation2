@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Akshar:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 *,
 ::after,
 ::before {
@@ -35,7 +35,7 @@ html, body {
 
 body {
   background-color: #1f96ff;
-  font-family: "Akshar", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 main {
@@ -203,15 +203,15 @@ svg#trophySVG {
 @keyframes flash {
   0% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0) translate(-50%, -50%);
   }
   20%, 80% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translate(-50%, -50%);
   }
   100% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0) translate(-50%, -50%);
   }
 }
 main > .landing ul {
@@ -246,7 +246,6 @@ main > .landing ul li:last-child::after {
 main > .landing ul li::before {
   content: attr(data-after);
   background-color: white;
-  transition: transform 500ms ease;
   padding: 0.5rem;
 }
 main > .landing ul li::after {
@@ -418,7 +417,7 @@ main .game .card p:last-child::before {
   content: "";
   height: 1rem;
   width: 1rem;
-  background-image: url(/assets/medias/SVG/trophy.svg);
+  background-image: url(../medias/SVG/trophy.svg);
   position: absolute;
   transform: translate(1rem, 1px);
   background-position: center;

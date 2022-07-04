@@ -9,7 +9,7 @@ export async function addPlayer ()
     if (!document.getElementById('clear')) await HTML.addElement(document.querySelector('.buttons'), btn);
 }
 
-export function clearPlayers ()
+export async function clearPlayers ()
 {
     document.getElementById('allPlayers').innerHTML = '';
 }
@@ -19,7 +19,7 @@ export function removePlayer (id)
     document.getElementById(id).remove();
 }
 
-export function loadList (players)
+export async function loadList (players)
 {
     list = document.getElementById('allPlayers');
     let playersList;

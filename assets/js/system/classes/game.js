@@ -48,7 +48,7 @@ class Game
         return this.#mode;
     }
 
-    setOrder ()
+    async setOrder ()
     {
         for(let x = this.#order.length - 1; x >= 1; x--) {
             let j = Math.floor(Math.random() * (x + 1));
@@ -68,7 +68,7 @@ class Game
         this.#list = [];
     }
 
-    nextPlayer ()
+    async nextPlayer ()
     {
         if (this.#mode === 'shuffle') this.#turn = Math.floor(Math.random() * (this.allPlayers(true) - 1));
         
@@ -78,7 +78,7 @@ class Game
         }
     }
 
-    setTurn ()
+    async setTurn ()
     {
         this.#turn = 0;
     }

@@ -36,8 +36,7 @@ export async function gamemode ()
 
     HTML.btnBack();
 
-    const back = document.getElementById('back'),
-        mode = document.querySelectorAll('[data-mode]');
+    const [back, mode] = [document.getElementById('back'), document.querySelectorAll('[data-mode]')];
 
     back.addEventListener('click', GAMEMODE.back);
     for (let x = 0; x < mode.length; x++) {

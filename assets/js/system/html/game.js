@@ -2,7 +2,7 @@ import { party } from '../classes/game.js';
 import * as HTML from './general.js';
 
 
-export function setPlayer (players)
+export async function setPlayer (players)
 {
     let playersList;
 
@@ -23,7 +23,7 @@ export function setPlayer (players)
     HTML.addElement(document.getElementById('players'), playersList);
 }
 
-export function endWaiting ()
+export async function endWaiting ()
 {
     const loader = document.getElementById('loader');
 
@@ -68,7 +68,7 @@ export async function showPlayers ()
     return new Promise(resolve => setTimeout(resolve, 1500 * players.length));
 }
 
-export function selectPlayer (p, list)
+export async function selectPlayer (p, list)
 {
     const players = document.querySelectorAll('.card'),
         number = list.findIndex(obj => obj.getId() === p),
@@ -128,7 +128,7 @@ export function saveScore (id)
     score.innerText = add;
 }
 
-export function winner (id)
+export async function winner (id)
 {
     const card = document.querySelector('[data-player="' +id+ '"]');
 
@@ -152,7 +152,7 @@ export function winner (id)
     HTML.addElement(document.body, el);
 }
 
-export function hideWinner ()
+export async function hideWinner ()
 {
     document.getElementById('winner').remove();
 }
